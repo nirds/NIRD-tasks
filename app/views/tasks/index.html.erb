@@ -1,0 +1,26 @@
+<h1>Listing tasks</h1>
+
+<table>
+  <tr class="heading table">
+    <th>Name</th>
+    <th>Due</th>
+    <th>Importance</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tasks.each do |task| %>
+  <tr class="task table">
+    <td><%= task.name %></td>
+    <td><%= task.due %></td>
+    <td><%= task.importance %></td>
+    <td><%= link_to 'See and Edit Task Details', task %></td>
+    <td><%= link_to 'Task Complete', task, confirm: 'Are you sure? This will delete the task forever!', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Task', new_task_path %>
