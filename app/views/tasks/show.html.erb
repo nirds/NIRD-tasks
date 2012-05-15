@@ -12,7 +12,8 @@
 
 <p>
   <b>Due:</b>
-  <%= @task.due.strftime("%m-%d-%Y %H:%M") %>
+  <%= @task.due.strftime("%m-%d") %> <!-- Display due date -->
+  <%= @task.due.strftime("%H:%M") %> <!-- Display time due -->
 </p>
 
 <p>
