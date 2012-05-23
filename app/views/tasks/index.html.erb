@@ -7,17 +7,22 @@
     <th>Importance</th>
     <th>See More</th>
     <th>Progress</th>
+    <th>Completed</th>
     <th></th>
   </tr>
 
 <% @tasks.each do |task| %>
-  <tr class="task table">
-    <td><%= task.name %></td>
-    <td><%= task.due.strftime("%m-%d-%Y %H:%M") %></td>
-    <td><%= task.importance %></td>
-    <td><%= link_to 'See and Edit Task Details', task %></td>
-    <td><%= link_to 'Task Complete', task, confirm: 'Are you sure? This will delete the task forever!', method: :delete %></td>
-  </tr>
+  <%if task.completed%>
+  <%else%>
+    <tr class="task table">
+      <td><%= task.name %></td>
+      <td><%= task.due.strftime("%m-%d-%Y %H:%M") %></td>
+      <td><%= task.importance %></td>
+      <td><%= link_to 'See and Edit Task Details', task %></td>
+      <td><%= link_to 'Mark Complete?', task_path(task, :completed => true), :method => :put %></td>
+      <td><%= task.completed %> </td>
+    </tr>
+  <% end %>
 <% end %>
 </table>
 

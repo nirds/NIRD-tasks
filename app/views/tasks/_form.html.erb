@@ -27,6 +27,10 @@
     <%= f.label :importance %><br />
     <%= f.number_field :importance %>
   </div>
+  <div class="field">
+    <%= f.label :completed %><br />
+    <%= f.radio_button :completed, "true" %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
