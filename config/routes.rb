@@ -1,5 +1,8 @@
 NIRDTasks::Application.routes.draw do
+
   resources :tasks
+
+  match '/search' => 'tasks#search'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

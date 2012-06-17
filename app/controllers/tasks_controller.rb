@@ -80,4 +80,13 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def search
+    @search = Task.search do
+      keywords(params[:q])
+    end
+    respond_to do |format|
+      format.html { render action: "index" }
+    end
+  end
 end

@@ -1,5 +1,21 @@
 <h1>Listing tasks</h1>
 
+<%= form_tag("search", :method => "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<div id='results'>
+  <% unless @search.nil? %>
+  <% @search.each_hit_with_result do |hit, task| %>
+    <p>
+      <%= task.name %>
+    </p>
+    <% end %>
+    <% end %>
+</div>
+
 <table>
   <tr class="heading table">
     <th>Name</th>
@@ -10,7 +26,7 @@
     <th>Completed</th>
     <th></th>
   </tr>
-
+<% if @tasks %>
 <% @tasks.each do |task| %>
   <%if task.completed%>
   <%else%>
@@ -23,6 +39,7 @@
       <td><%= task.completed %> </td>
     </tr>
   <% end %>
+<% end %>
 <% end %>
 </table>
 
